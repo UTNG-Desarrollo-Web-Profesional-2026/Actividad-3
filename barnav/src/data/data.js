@@ -3,19 +3,31 @@ const navbarLinks = [
     id: 1,
     name: "Home",
     title: "Inicio",
-    url: "../secciones/Home.jsx"
+    url: "/"  // Coincide con path="/" en App.jsx
   },
   {
     id: 2,
     name: "About",
     title: "Acerca de",
-    url: "../secciones/About.jsx"
+    url: "/about" // Coincide con path="/about"
   },
   {
     id: 3,
     name: "courses",
     title: "Cursos",
-    url: "../secciones/Cursos.jsx"
+    url: "/cursos" // Coincide con path="/cursos"
+  },
+  {
+    id: 4,
+    name: "servicios",
+    title: "Servicios",
+    url: "/" // Opción extra 1
+  },
+  {
+    id: 5,
+    name: "login",
+    title: "Ingresar",
+    url: "/login" // Opción extra 2: Interfaz de Login
   }
 ];
 
