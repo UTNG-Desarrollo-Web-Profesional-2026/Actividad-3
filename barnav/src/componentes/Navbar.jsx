@@ -5,6 +5,8 @@ import { ImBooks } from "react-icons/im"
 import { MdMenu } from "react-icons/md"
 import { PiShoppingCartLight } from "react-icons/pi"
 import MenuResponsivo from './MenuResponsivo'
+// 1. Importa Link de react-router-dom
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [abierto, setAbierto] = useState(false)
@@ -14,24 +16,25 @@ const Navbar = () => {
       <nav>
         <div className="container flex justify-between font-bold items-center py-8">
           
-          {/* Logo */}
-          <div className="text-2xl flex items-center gap-2 uppercase">
+          {/* Logo - Ahora es un Link al Home */}
+          <Link to="/" className="text-2xl flex items-center gap-2 uppercase">
             <ImBooks />
             <p>El sitio de BARG</p>
             <p className="text-secondary">Cursos</p>
-          </div>
+          </Link>
 
           {/* Menú Desktop */}
           <div className="hidden md:block">
             <ul className="flex items-center gap-7 text-gray-600">
               {navbarLinks.map((item) => (
                 <li key={item.id}>
-                  <a
-                    href={item.url}
+                  {/* 2. CAMBIO CLAVE: Usar <Link to={...}> en lugar de <a href={...}> */}
+                  <Link
+                    to={item.url}
                     className="inline-block py-1 px-3 hover:text-primary"
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -45,8 +48,10 @@ const Navbar = () => {
             <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-300">
               <PiShoppingCartLight />
             </button>
+            
+            {/* Si ya está logueado, quizás quieras cambiar este botón por "Cerrar sesión" o tu perfil */}
             <button className="hover:bg-primary font-semibold rounded-md text-white bg-secondary px-4 py-2 duration-300 border-primary hidden md:block">
-              Ingresar
+              Perfil
             </button>
             
             {/* Menú Móvil */}
@@ -61,6 +66,7 @@ const Navbar = () => {
       </nav>
 
       {/* Menú Responsivo */}
+      {/* 3. ¡Ojo! También debes ir a MenuResponsivo.jsx y cambiar los <a> por <Link> allá */}
       <MenuResponsivo open={abierto} navBarLinks={navbarLinks} />
     </>
   )
